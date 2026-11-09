@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>AMR 互動展示</title>
+    <base href="/aeb-amr/" />
+    <link rel="icon" type="image/svg+xml" href="images/amr-one-site/logo-onehealth.svg" />
+    <link rel="stylesheet" href="_content/MudBlazor/MudBlazor.min.css" />
+    <link rel="stylesheet" href="AmrPreview.Wasm.styles.css" />
+    <link rel="stylesheet" href="css/preview-host.css" />
+</head>
+<body>
+    <div id="app">
+        <main class="preview-message" role="status">
+            <h1>AMR 互動展示</h1>
+            <p>首次開啟需要下載執行元件，請稍候…</p>
+        </main>
+    </div>
+    <div id="blazor-error-ui" role="alert">
+        展示程式發生錯誤，請重新載入。若持續發生，請檢查網路連線並回報問題。
+        <a href="" class="reload">重新載入</a>
+        <button type="button" class="dismiss" aria-label="關閉錯誤提示">×</button>
+    </div>
+    <noscript>此互動展示需要啟用 JavaScript 與 WebAssembly。</noscript>
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script src="lib/d3/d3.min.js"></script>
+    <script src="js/d3Charts.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+</html>

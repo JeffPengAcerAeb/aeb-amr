@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="防疫一體 One Health 視覺識別標誌">
+  <title>防疫一體 One Health</title>
+  <!-- 底座：機構深藍圓角方章（公共衛生機關的穩重與信任） -->
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#0b3a5b"/>
+  <rect x="1.75" y="1.75" width="60.5" height="60.5" rx="13.25" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <!-- 三段守護環：人類（醫療藍）· 環境（生態綠）· 動物（畜牧金） -->
+  <path d="M15.91 18.5A21 21 0 0 1 48.09 18.5" stroke="#5cb8e6" stroke-width="4.6" stroke-linecap="round"/>
+  <path d="M51.73 24.82A21 21 0 0 1 35.65 52.68" stroke="#4cc38a" stroke-width="4.6" stroke-linecap="round"/>
+  <path d="M28.35 52.68A21 21 0 0 1 12.27 24.82" stroke="#f2b84b" stroke-width="4.6" stroke-linecap="round"/>
+  <!-- 中央：醫療十字（公共衛生／醫療照護） -->
+  <path d="M28 20.5h8v7.5h7.5v8H36v7.5h-8V36h-7.5v-8H28z" fill="#ffffff" stroke="#ffffff" stroke-width="1" stroke-linejoin="round"/>
+  <!-- 十字內脈搏線（持續監測） -->
+  <path d="M22.4 32h5.1l1.9-3.6 3 7.2 2.4-5.2 1.4 1.6h5.4" stroke="#0b3a5b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

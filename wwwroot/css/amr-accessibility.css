@@ -1,0 +1,73 @@
+.amr-layout.amr-layout a.amr-accesskey {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    padding: 2px 6px;
+    color: #17547a;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    text-decoration: none;
+}
+.amr-layout.amr-layout a.amr-accesskey:hover,
+.amr-layout.amr-layout a.amr-accesskey:focus-visible { background: #e8f1f7; color: #0b3a5b; border-color: #17547a; }
+.amr-layout.amr-preview .amr-footer a.amr-accesskey { color: #f4c563; }
+.amr-layout .amr-utility-intro { display: flex; align-items: center; gap: 6px; }
+.amr-layout .amr-utility-intro > span { color: var(--amr-muted); }
+.amr-layout :focus-visible { outline: 3px solid #ad543d; outline-offset: 3px; }
+.amr-layout.amr-layout .amr-nav a:focus-visible { outline: 3px solid #ffdf80; outline-offset: -4px; }
+.amr-layout .amr-skip { z-index: 1500; }
+.amr-layout .amr-skip:focus { position: fixed; top: 8px; left: 8px; }
+.amr-layout .amr-utility .amr-wrap,
+.amr-layout .amr-utility-actions { flex-wrap: wrap; }
+.amr-layout .amr-a11y-guide { position: relative; font-size: 14px; color: #28343e; }
+.amr-layout .amr-a11y-guide summary { cursor: pointer; padding: 8px; }
+.amr-layout .amr-a11y-guide > div {
+    position: absolute;
+    z-index: 1400;
+    right: 0;
+    width: min(480px, calc(100vw - 48px));
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #667078;
+    box-shadow: 0 4px 12px #0003;
+}
+.amr-layout .amr-a11y-guide p + p { margin-top: 12px; }
+.amr-layout .amr-a11y-table { margin-top: 20px; font-size: 14px; }
+.amr-layout .amr-a11y-table summary { cursor: pointer; padding: 10px; color: #17547a; font-weight: 700; }
+.amr-layout .amr-table-scroll { max-height: 480px; overflow: auto; border: 1px solid #667078; }
+.amr-layout .amr-table-scroll table { width: 100%; border-collapse: collapse; color: #28343e; background: #fff; }
+.amr-layout .amr-table-scroll caption { padding: 10px; text-align: left; }
+.amr-layout .amr-table-scroll th,
+.amr-layout .amr-table-scroll td { padding: 8px 12px; border: 1px solid #667078; text-align: left; white-space: nowrap; }
+.amr-layout .amr-table-scroll th { background: #e8f1f7; }
+.amr-layout .amr-chart-keyboard { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 12px; }
+.amr-layout .amr-chart-keyboard button { padding: 8px 12px; border: 1px solid #667078; border-radius: 4px; color: #17547a; background: #fff; font: inherit; cursor: pointer; }
+.amr-layout .amr-chart-keyboard button[aria-pressed="true"] { color: #fff; background: #17547a; }
+.amr-layout .amr-footer p { white-space: normal; }
+.amr-layout.amr-layout .amr-report-code.au,
+.amr-layout.amr-layout .amr-hai-topic.is-selected .amr-hai-topic-number { color: #1c6662; }
+.amr-layout.amr-layout .amr-report-code.ar { color: #984631; }
+.amr-layout.amr-layout .amr-categories small { color: #48535c; }
+.amr-layout .amr-info-details summary { cursor: pointer; padding: 8px; color: #17547a; }
+.amr-layout .amr-info-details .amr-hai-info-panel { position: static; width: auto; max-width: 620px; margin-top: 8px; }
+.amr-layout.amr-layout .amr-info-details:not([open]) .amr-hai-info-panel { display: none; }
+.amr-layout .amr-info-details[open] .amr-hai-info-panel { display: block; }
+.amr-layout .amr-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 700px) {
+    .amr-layout .amr-utility-intro > span { display: none; }
+    .amr-layout .amr-a11y-guide { position: static; }
+    .amr-layout .amr-a11y-guide > div { right: 24px; }
+    .amr-layout .amr-hai-chart { max-width: 100%; overflow-x: auto; }
+    .amr-layout .amr-brand { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .amr-layout *, .amr-layout *::before, .amr-layout *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

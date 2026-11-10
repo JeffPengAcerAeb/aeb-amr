@@ -151,10 +151,10 @@ export function attach(dialog) {
     bindings.set(dialog, { input, onCompositionStart, onCompositionEnd, onKey });
 }
 
-export function refresh(dialog, focusInput = false) {
+export function refresh(dialog, focusInput = false, scrollToEnd = true) {
+    if (focusInput) dialog.querySelector('textarea').focus({ preventScroll: true });
     const log = dialog.querySelector('[role="log"]');
-    log.scrollTop = log.scrollHeight;
-    if (focusInput) dialog.querySelector('textarea').focus();
+    log.scrollTop = scrollToEnd ? log.scrollHeight : 0;
 }
 
 export function dispose(dialog) {

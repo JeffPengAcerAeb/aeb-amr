@@ -11,7 +11,7 @@
 .amr-preview .amr-assistant-launcher svg { width: 24px; height: 24px; }
 .amr-preview .amr-assistant-dialog {
     position: fixed; inset: auto 24px 24px auto; margin: 0; padding: 0;
-    width: 440px; max-width: calc(100vw - 32px); height: 680px; max-height: calc(100dvh - 48px);
+    width: 480px; max-width: calc(100vw - 32px); height: 760px; max-height: calc(100dvh - 48px);
     border: 1px solid #cad9e2; border-radius: 12px; background: #fff; color: #13283a;
     box-shadow: 0 16px 60px #0b3a5b40; overflow: hidden;
     font-family: inherit; font-size: calc(13px * var(--amr-scale)); line-height: 1.6;
@@ -36,17 +36,17 @@
 .amr-preview .amr-assistant-dialog button:disabled { cursor: not-allowed; opacity: .6; }
 .amr-preview .amr-assistant-dialog :focus-visible,
 .amr-preview .amr-assistant-launcher:focus-visible { outline: 3px solid #ad543d; outline-offset: 3px; }
-.amr-preview .amr-assistant-header { display: flex; flex-shrink: 0; align-items: center; gap: 12px; padding: 18px 20px; background: #0b3a5b; border-bottom: 4px solid #00766b; color: #fff; }
+.amr-preview .amr-assistant-header { display: flex; flex-shrink: 0; align-items: center; gap: 12px; padding: 12px 16px; background: #0b3a5b; border-bottom: 4px solid #00766b; color: #fff; }
 .amr-preview .amr-assistant-header img { flex-shrink: 0; }
 .amr-preview .amr-assistant-header h2 { margin: 0; font-size: calc(20px * var(--amr-scale)); font-weight: 700; color: #fff; line-height: 1.4; }
 .amr-preview .amr-assistant-header p { margin: 0 0 3px; color: #91e5db; font-size: calc(10px * var(--amr-scale)); letter-spacing: .06em; }
 .amr-preview .amr-assistant-close { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; margin-left: auto; border: 1px solid #ffffff66; border-radius: 6px; background: transparent; color: #fff; }
 .amr-preview .amr-assistant-header button:focus-visible { outline-color: #ffdf80; outline-offset: -3px; }
-.amr-preview .amr-assistant-toolbar { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 16px; background: #e6f3f1; font-size: calc(11px * var(--amr-scale)); color: #05544c; }
+.amr-preview .amr-assistant-toolbar { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 12px; background: #e6f3f1; font-size: calc(11px * var(--amr-scale)); color: #05544c; }
 .amr-preview .amr-assistant-toolbar > span { display: flex; align-items: center; gap: 6px; }
 .amr-preview .amr-assistant-toolbar > span > span { width: 6px; height: 6px; border-radius: 50%; background: #00766b; flex-shrink: 0; }
 .amr-preview .amr-assistant-toolbar button { min-height: 32px; border: 0; background: transparent; color: #05544c; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
-.amr-preview .amr-assistant-log { flex: 1 1 auto; min-height: 80px; overflow-y: auto; overscroll-behavior: contain; padding: 22px 18px; background: #f4f7f9; }
+.amr-preview .amr-assistant-log { flex: 1 1 0; min-height: 160px; overflow-y: auto; overscroll-behavior: contain; padding: 16px; background: #f4f7f9; }
 .amr-preview .amr-assistant-log:focus-visible { outline-offset: -3px; }
 .amr-preview .amr-assistant-welcome { padding: 4px 0; }
 .amr-preview .amr-assistant-kicker { color: #00766b; font-size: calc(11px * var(--amr-scale)); font-weight: 700; }
@@ -64,17 +64,17 @@
 .amr-preview .amr-assistant-message.is-user .amr-assistant-speaker { text-align: right; }
 .amr-preview .amr-assistant-links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 8px; }
 .amr-preview .amr-assistant-links a { color: #0a5a8a; text-decoration: underline; text-underline-offset: 3px; font-weight: 700; padding-block: 4px; }
-.amr-preview .amr-assistant-followups { display: flex; flex-shrink: 0; flex-wrap: wrap; gap: 6px; padding: 10px 16px 0; max-height: 120px; overflow-y: auto; }
-.amr-preview .amr-assistant-followups button { padding: 6px 10px; border: 1px solid #9dbbb5; border-radius: 4px; background: #f1f8f6; color: #05544c; font-size: calc(11px * var(--amr-scale)); }
-.amr-preview .amr-assistant-status { flex-shrink: 0; padding: 8px 16px 0; font-size: calc(10px * var(--amr-scale)); color: #526575; }
-.amr-preview .amr-assistant-composer { flex-shrink: 0; padding: 8px 16px 10px; }
+.amr-preview .amr-assistant-followups { display: flex; flex-shrink: 0; flex-wrap: wrap; gap: 6px; padding: 6px 12px 0; }
+.amr-preview .amr-assistant-followups button { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; padding: 4px 8px; border: 1px solid #9dbbb5; border-radius: 4px; background: #f1f8f6; color: #05544c; font-size: calc(11px * var(--amr-scale)); }
+.amr-preview .amr-assistant-status { flex-shrink: 0; padding: 4px 12px 0; font-size: calc(10px * var(--amr-scale)); color: #526575; }
+.amr-preview .amr-assistant-composer { flex-shrink: 0; padding: 6px 12px 8px; }
 .amr-preview .amr-assistant-composer label { display: block; font-size: calc(12px * var(--amr-scale)); font-weight: 700; margin-bottom: 6px; }
 .amr-preview .amr-assistant-composer > div { display: flex; align-items: flex-end; gap: 8px; }
 .amr-preview .amr-assistant-composer textarea { flex: 1; min-width: 0; max-height: 120px; resize: vertical; padding: 10px; border: 1px solid #7b8c9c; border-radius: 6px; background: #fff; color: #13283a; font: inherit; }
 .amr-preview .amr-assistant-composer textarea::placeholder { color: #526575; opacity: 1; }
 .amr-preview .amr-assistant-composer button { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid #0a5a8a; border-radius: 6px; background: #0a5a8a; color: #fff; }
 .amr-preview .amr-assistant-composer small { display: block; margin-top: 5px; font-size: calc(10px * var(--amr-scale)); color: #526575; }
-.amr-preview .amr-assistant-disclaimer { flex-shrink: 0; margin: 0; padding: 10px 16px; border-top: 1px solid #d5dfe6; background: #f4f7f9; font-size: calc(10px * var(--amr-scale)); color: #4a5d6c; }
+.amr-preview .amr-assistant-disclaimer { flex-shrink: 0; margin: 0; padding: 6px 12px; border-top: 1px solid #d5dfe6; background: #f4f7f9; font-size: calc(10px * var(--amr-scale)); color: #4a5d6c; }
 .amr-preview .amr-assistant-confirm { flex-shrink: 0; padding: 12px 16px; background: #fff6e6; border-bottom: 1px solid #d9b677; color: #6b4600; }
 .amr-preview .amr-assistant-confirm p { margin: 0 0 8px; }
 .amr-preview .amr-assistant-confirm button { padding: 6px 12px; margin-right: 8px; border: 1px solid #9c752f; border-radius: 4px; color: #6b4600; background: #fff; }

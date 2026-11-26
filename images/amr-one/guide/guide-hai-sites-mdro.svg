@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 390" role="img" aria-labelledby="t2 d2">
+  <title id="t2">醫院五大感染部位、三大侵入性導管與八大重點多重抗藥菌概念圖</title>
+  <desc id="d2">整理監測季報與 HAI 年報追蹤的五大感染部位 BSI、UTI、PNEU、SSI、OTH，三大侵入性導管相關感染 CLABSI、VAP、CAUTI，以及八大重點多重抗藥菌 CRE、CR E. coli、CRKP、CRAB、CRPA、VRE、VR E. faecium 與 MRSA。</desc>
+  <defs>
+    <style>
+      .f { font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif; }
+      .h-title { font-size: 16px; font-weight: 800; fill: #1e2423; }
+      .col-h { font-size: 13.5px; font-weight: 800; fill: #145256; }
+      .col-h-w { font-size: 13.5px; font-weight: 800; fill: #9e4f0e; }
+      .col-h-r { font-size: 13.5px; font-weight: 800; fill: #852020; }
+      .code { font-size: 12px; font-weight: 800; fill: #ffffff; font-family: ui-monospace, Consolas, monospace; }
+      .code-dark { font-size: 11.5px; font-weight: 800; fill: #145256; font-family: ui-monospace, Consolas, monospace; }
+      .name { font-size: 13px; font-weight: 800; fill: #1e2423; }
+      .sub { font-size: 11.2px; font-weight: 500; fill: #4c5957; }
+      .note { font-size: 11px; font-weight: 600; fill: #374240; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="920" height="390" rx="8" fill="#fafaf7" stroke="#d8ddda" stroke-width="1"/>
+  <!-- Top strip -->
+  <rect x="0" y="0" width="920" height="44" rx="8" fill="#eeefe9"/>
+  <rect x="0" y="36" width="920" height="8" fill="#eeefe9"/>
+  <line x1="0" y1="44" x2="920" y2="44" stroke="#d8ddda" stroke-width="1"/>
+  <rect x="20" y="13" width="4" height="18" rx="2" fill="#1a666b"/>
+  <text x="32" y="27" class="f h-title">醫院裡都在監測什麼？感染部位、侵入性導管與重點抗藥菌</text>
+  <rect x="752" y="11" width="148" height="22" rx="3" fill="#fbf0e3" stroke="#e4c6a3"/>
+  <text x="826" y="26" text-anchor="middle" class="f" font-size="11" font-weight="700" fill="#9e4f0e">HAI 年報 ＋ 監測季報</text>
+
+  <!-- PANEL 1: 5 Infection Sites -->
+  <rect x="20" y="60" width="278" height="296" rx="6" fill="#ffffff" stroke="#b8cfd0" stroke-width="1.3"/>
+  <rect x="20" y="60" width="278" height="34" rx="6" fill="#e7f1f1"/>
+  <rect x="20" y="86" width="278" height="8" fill="#e7f1f1"/>
+  <text x="34" y="82" class="f col-h">一、五大監測感染部位</text>
+
+  <!-- 5 site rows -->
+  <g transform="translate(34, 106)">
+    <rect x="0" y="0" width="52" height="24" rx="4" fill="#1a666b"/>
+    <text x="26" y="16" text-anchor="middle" class="code">BSI</text>
+    <text x="62" y="13" class="f name">血流感染</text>
+    <text x="62" y="28" class="f sub">血液培養檢出致病菌之感染</text>
+
+    <line x1="0" y1="38" x2="250" y2="38" stroke="#e9ecea"/>
+
+    <rect x="0" y="48" width="52" height="24" rx="4" fill="#1a666b"/>
+    <text x="26" y="64" text-anchor="middle" class="code">UTI</text>
+    <text x="62" y="61" class="f name">泌尿道感染</text>
+    <text x="62" y="76" class="f sub">包含導尿管留置相關感染</text>
+
+    <line x1="0" y1="86" x2="250" y2="86" stroke="#e9ecea"/>
+
+    <rect x="0" y="96" width="52" height="24" rx="4" fill="#1a666b"/>
+    <text x="26" y="112" text-anchor="middle" class="code">PNEU</text>
+    <text x="62" y="109" class="f name">肺炎</text>
+    <text x="62" y="124" class="f sub">自 2009 年起由下呼吸道感染調整</text>
+
+    <line x1="0" y1="134" x2="250" y2="134" stroke="#e9ecea"/>
+
+    <rect x="0" y="144" width="52" height="24" rx="4" fill="#28587b"/>
+    <text x="26" y="160" text-anchor="middle" class="code">SSI</text>
+    <text x="62" y="157" class="f name">手術部位感染</text>
+    <text x="62" y="172" class="f sub">無手術住院人日，不計感染密度</text>
+
+    <line x1="0" y1="182" x2="250" y2="182" stroke="#e9ecea"/>
+
+    <rect x="0" y="192" width="52" height="24" rx="4" fill="#596664"/>
+    <text x="26" y="208" text-anchor="middle" class="code">OTH</text>
+    <text x="62" y="205" class="f name">其他部位感染</text>
+    <text x="62" y="220" class="f sub">非屬上述四類部位之感染個案</text>
+  </g>
+
+  <!-- PANEL 2: 3 Invasive Devices -->
+  <rect x="312" y="60" width="280" height="296" rx="6" fill="#ffffff" stroke="#e4c6a3" stroke-width="1.3"/>
+  <rect x="312" y="60" width="280" height="34" rx="6" fill="#fbf0e3"/>
+  <rect x="312" y="86" width="280" height="8" fill="#fbf0e3"/>
+  <text x="326" y="82" class="f col-h-w">二、三大侵入性導管重點防護</text>
+
+  <!-- Device 1: CLABSI -->
+  <rect x="326" y="106" width="252" height="64" rx="5" fill="#faf7f2" stroke="#e4c6a3"/>
+  <circle cx="350" cy="138" r="15" fill="#d9822b" fill-opacity="0.16" stroke="#d9822b" stroke-width="1.4"/>
+  <path d="M350 129 c0 0-6 7-6 11 a6 6 0 0 0 12 0 c0-4-6-11-6-11z" fill="none" stroke="#9e4f0e" stroke-width="1.6"/>
+  <text x="374" y="128" class="f name">中心導管 → CLABSI</text>
+  <text x="374" y="146" class="f sub">中心導管相關血流感染密度（‰）</text>
+  <text x="374" y="161" class="f sub">分母：中心導管使用人日數</text>
+
+  <!-- Device 2: VAP -->
+  <rect x="326" y="180" width="252" height="64" rx="5" fill="#faf7f2" stroke="#e4c6a3"/>
+  <circle cx="350" cy="212" r="15" fill="#d9822b" fill-opacity="0.16" stroke="#d9822b" stroke-width="1.4"/>
+  <path d="M350 202 v12 M350 208 c-4 0-6 3-6 7 c0 3 2 5 4 5 M350 208 c4 0 6 3 6 7 c0 3-2 5-4 5" fill="none" stroke="#9e4f0e" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="374" y="202" class="f name">呼吸器 → VAP</text>
+  <text x="374" y="220" class="f sub">呼吸器相關肺炎感染密度（‰）</text>
+  <text x="374" y="235" class="f sub">分母：呼吸器使用人日數</text>
+
+  <!-- Device 3: CAUTI -->
+  <rect x="326" y="254" width="252" height="64" rx="5" fill="#faf7f2" stroke="#e4c6a3"/>
+  <circle cx="350" cy="286" r="15" fill="#d9822b" fill-opacity="0.16" stroke="#d9822b" stroke-width="1.4"/>
+  <path d="M346 277 v10 a4 4 0 0 0 8 0 v-10 M350 291 v6" fill="none" stroke="#9e4f0e" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="374" y="276" class="f name">導尿管 → CAUTI</text>
+  <text x="374" y="294" class="f sub">導尿管相關泌尿道感染密度（‰）</text>
+  <text x="374" y="309" class="f sub">分母：導尿管使用人日數</text>
+
+  <!-- Note strip -->
+  <text x="326" y="341" class="f note">★ 評估縮短或移除非必要導管為感管首要介入</text>
+
+  <!-- PANEL 3: 8 MDROs -->
+  <rect x="606" y="60" width="294" height="296" rx="6" fill="#ffffff" stroke="#e3b8b8" stroke-width="1.3"/>
+  <rect x="606" y="60" width="294" height="34" rx="6" fill="#f9eaea"/>
+  <rect x="606" y="86" width="294" height="8" fill="#f9eaea"/>
+  <text x="620" y="82" class="f col-h-r">三、季報八大重點多重抗藥菌</text>
+
+  <!-- Group A: CRE family -->
+  <rect x="620" y="106" width="266" height="82" rx="5" fill="#fcf7f7" stroke="#e3b8b8"/>
+  <text x="632" y="124" class="f name" fill="#852020">碳青黴烯類抗藥腸桿菌目群</text>
+  <rect x="632" y="132" width="46" height="20" rx="3" fill="#a62c2b"/>
+  <text x="655" y="146" text-anchor="middle" class="code">CRE</text>
+  <rect x="684" y="132" width="84" height="20" rx="3" fill="#a62c2b"/>
+  <text x="726" y="146" text-anchor="middle" class="code">CR E. coli</text>
+  <rect x="774" y="132" width="54" height="20" rx="3" fill="#a62c2b"/>
+  <text x="801" y="146" text-anchor="middle" class="code">CRKP</text>
+  <text x="632" y="168" class="f sub">對 imipenem、meropenem、ertapenem</text>
+  <text x="632" y="182" class="f sub">或 doripenem 任一抗藥之腸桿菌目</text>
+
+  <!-- Group B: CRAB & CRPA -->
+  <rect x="620" y="196" width="266" height="62" rx="5" fill="#fafaf7" stroke="#d8ddda"/>
+  <rect x="632" y="206" width="52" height="20" rx="3" fill="#145256"/>
+  <text x="658" y="220" text-anchor="middle" class="code">CRAB</text>
+  <text x="692" y="220" class="f sub">鮑氏不動桿菌群（IPM / MEM 抗藥）</text>
+  <rect x="632" y="232" width="52" height="20" rx="3" fill="#145256"/>
+  <text x="658" y="246" text-anchor="middle" class="code">CRPA</text>
+  <text x="692" y="246" class="f sub">綠膿桿菌（IPM / MEM 抗藥）</text>
+
+  <!-- Group C: VRE & MRSA -->
+  <rect x="620" y="266" width="266" height="78" rx="5" fill="#fafaf7" stroke="#d8ddda"/>
+  <rect x="632" y="276" width="44" height="20" rx="3" fill="#9e4f0e"/>
+  <text x="654" y="290" text-anchor="middle" class="code">VRE</text>
+  <rect x="682" y="276" width="98" height="20" rx="3" fill="#9e4f0e"/>
+  <text x="731" y="290" text-anchor="middle" class="code">VR E. faecium</text>
+  <text x="632" y="311" class="f sub">對 vancomycin 抗藥之腸球菌／屎腸球菌</text>
+  <rect x="632" y="319" width="52" height="20" rx="3" fill="#2c6b4f"/>
+  <text x="658" y="333" text-anchor="middle" class="code">MRSA</text>
+  <text x="692" y="333" class="f sub">對 oxacillin 抗藥之金黃色葡萄球菌</text>
+
+  <text x="20" y="378" class="f sub">備註：季報抗藥性百分比加總中間型（intermediate）與抗藥型（resistant）；區域別或年度總菌株數少於 20 株者不呈現抗藥性百分比。</text>
+</svg>

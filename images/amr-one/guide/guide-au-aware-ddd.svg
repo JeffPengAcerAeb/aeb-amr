@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 418" role="img" aria-labelledby="t3 d3">
+  <title id="t3">WHO AWaRe 抗生素分級與 DDD 定義每日劑量換算圖解</title>
+  <desc id="d3">左側圖解世界衛生組織 AWaRe 抗生素三層分類 Access 第一線首選（目標從 60% 提升至 2030 年 70%）、Watch 警戒監控與 Reserve 最後防線，右側以 0.5 克口服 Ampicillin 每日 4 錠等於 1 DDD 為例說明 DDD 與 DID 計算概念。</desc>
+  <defs>
+    <style>
+      .f { font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif; }
+      .h-title { font-size: 16px; font-weight: 800; fill: #1e2423; }
+      .sec-h { font-size: 14px; font-weight: 800; fill: #145256; }
+      .tier-t { font-size: 14px; font-weight: 800; fill: #ffffff; }
+      .tier-sub { font-size: 11.5px; font-weight: 500; fill: #374240; }
+      .pill-lbl { font-size: 11px; font-weight: 800; fill: #145256; }
+      .big-num { font-size: 20px; font-weight: 800; fill: #145256; font-family: ui-monospace, Consolas, monospace; }
+      .sub { font-size: 11.3px; font-weight: 500; fill: #4c5957; }
+      .warn { font-size: 11.5px; font-weight: 700; fill: #852020; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="920" height="418" rx="8" fill="#fafaf7" stroke="#d8ddda" stroke-width="1"/>
+  <!-- Top header -->
+  <rect x="0" y="0" width="920" height="44" rx="8" fill="#eeefe9"/>
+  <rect x="0" y="36" width="920" height="8" fill="#eeefe9"/>
+  <line x1="0" y1="44" x2="920" y2="44" stroke="#d8ddda" stroke-width="1"/>
+  <rect x="20" y="13" width="4" height="18" rx="2" fill="#d9822b"/>
+  <text x="32" y="27" class="f h-title">抗生素怎麼分級與計算？WHO AWaRe 分類與 DDD 白話圖解</text>
+  <rect x="752" y="11" width="148" height="22" rx="3" fill="#e7f1f1" stroke="#b8cfd0"/>
+  <text x="826" y="26" text-anchor="middle" class="f pill-lbl">臺灣抗生素使用量年報</text>
+
+  <!-- LEFT HALF: WHO AWaRe -->
+  <rect x="20" y="60" width="440" height="326" rx="6" fill="#ffffff" stroke="#d8ddda" stroke-width="1.2"/>
+  <text x="36" y="86" class="f sec-h">WHO AWaRe 抗生素三層管理架構</text>
+  <text x="36" y="104" class="f sub">依抗藥性產生機率與臨床定位分級，引導優先使用窄效第一線用藥</text>
+
+  <!-- Tier 1: Access -->
+  <rect x="36" y="116" width="408" height="74" rx="5" fill="#e8f2ed" stroke="#b8d3c5" stroke-width="1.3"/>
+  <rect x="36" y="116" width="96" height="74" rx="5" fill="#2c6b4f"/>
+  <text x="84" y="148" text-anchor="middle" class="f tier-t">Access</text>
+  <text x="84" y="168" text-anchor="middle" class="f" font-size="11.5" font-weight="700" fill="#e8f2ed">第一／二線</text>
+  <text x="146" y="137" class="f" font-size="12.5" font-weight="800" fill="#1e523a">非廣效・副作用小・抗藥風險較低</text>
+  <text x="146" y="155" class="f tier-sub">適用於大多數感染症，常作為第一線或第二線用藥。</text>
+  <rect x="146" y="164" width="286" height="20" rx="3" fill="#ffffff" stroke="#b8d3c5"/>
+  <text x="289" y="178" text-anchor="middle" class="f" font-size="11" font-weight="800" fill="#1e523a">國際目標：WHO 2023 ≥ 60% → 2030 聯合國 ≥ 70%</text>
+
+  <!-- Tier 2: Watch -->
+  <rect x="36" y="198" width="408" height="60" rx="5" fill="#fbf0e3" stroke="#e4c6a3" stroke-width="1.3"/>
+  <rect x="36" y="198" width="96" height="60" rx="5" fill="#b45a12"/>
+  <text x="84" y="224" text-anchor="middle" class="f tier-t">Watch</text>
+  <text x="84" y="242" text-anchor="middle" class="f" font-size="11.5" font-weight="700" fill="#fbf0e3">警戒監控</text>
+  <text x="146" y="221" class="f" font-size="12.5" font-weight="800" fill="#7c3d0a">廣效性抗生素・抗藥性機率較高</text>
+  <text x="146" y="241" class="f tier-sub">通常用於病情較重病人，臨床應避免過度使用。</text>
+
+  <!-- Tier 3: Reserve -->
+  <rect x="36" y="266" width="408" height="60" rx="5" fill="#f9eaea" stroke="#e3b8b8" stroke-width="1.3"/>
+  <rect x="36" y="266" width="96" height="60" rx="5" fill="#a62c2b"/>
+  <text x="84" y="292" text-anchor="middle" class="f tier-t">Reserve</text>
+  <text x="84" y="310" text-anchor="middle" class="f" font-size="11.5" font-weight="700" fill="#f9eaea">最後防線</text>
+  <text x="146" y="289" class="f" font-size="12.5" font-weight="800" fill="#852020">多重抗藥性細菌感染之最後一線</text>
+  <text x="146" y="309" class="f tier-sub">應謹慎選擇以確保有效性，儘量減少過度依賴。</text>
+
+  <!-- Extra 2 classes note (2 clean lines, generous margins) -->
+  <rect x="36" y="334" width="408" height="40" rx="4" fill="#f6f6f3" stroke="#d8ddda"/>
+  <text x="48" y="350" class="f sub">另含：<tspan font-weight="700" fill="#1e2423">其他類（Other）</tspan>無法歸類於 WHO AWaRe 清單之抗生素</text>
+  <text x="48" y="366" class="f sub"><tspan font-weight="700" fill="#852020">Not recommended 類</tspan>：不具實證之複方製劑，WHO 不建議使用</text>
+
+  <!-- RIGHT HALF: DDD Worked Example -->
+  <rect x="476" y="60" width="424" height="326" rx="6" fill="#ffffff" stroke="#b8cfd0" stroke-width="1.2"/>
+  <text x="494" y="86" class="f sec-h">什麼是 DDD？以口服 Ampicillin 為例</text>
+  <text x="494" y="104" class="f sub">WHO 定義：70 公斤成人於主要適應症每日所需之平均維持劑量</text>
+
+  <!-- 4 tablets illustration -->
+  <rect x="494" y="116" width="388" height="104" rx="6" fill="#f3f8f8" stroke="#b8cfd0"/>
+  <text x="506" y="136" class="f" font-size="11.5" font-weight="800" fill="#145256">範例：每錠 0.5 克口服 Ampicillin（WHO 設定 1 DDD ＝ 2.0 克／天）</text>
+
+  <!-- Draw 4 capsules/tablets -->
+  <g transform="translate(510, 148)">
+    <!-- Pill 1 -->
+    <rect x="0" y="4" width="42" height="20" rx="10" fill="#ffffff" stroke="#1a666b" stroke-width="1.8"/>
+    <line x1="21" y1="4" x2="21" y2="24" stroke="#1a666b" stroke-width="1.4"/>
+    <rect x="0" y="4" width="21" height="20" rx="10" fill="#e7f1f1"/>
+    <text x="21" y="40" text-anchor="middle" class="f sub">0.5g</text>
+    <text x="21" y="54" text-anchor="middle" class="f pill-lbl">0.25 DDD</text>
+
+    <text x="51" y="19" text-anchor="middle" class="f" font-size="14" font-weight="800" fill="#9e4f0e">+</text>
+
+    <!-- Pill 2 -->
+    <rect x="60" y="4" width="42" height="20" rx="10" fill="#ffffff" stroke="#1a666b" stroke-width="1.8"/>
+    <rect x="60" y="4" width="21" height="20" rx="10" fill="#e7f1f1"/>
+    <line x1="81" y1="4" x2="81" y2="24" stroke="#1a666b" stroke-width="1.4"/>
+    <text x="81" y="40" text-anchor="middle" class="f sub">0.5g</text>
+    <text x="81" y="54" text-anchor="middle" class="f pill-lbl">0.25 DDD</text>
+
+    <text x="111" y="19" text-anchor="middle" class="f" font-size="14" font-weight="800" fill="#9e4f0e">+</text>
+
+    <!-- Pill 3 -->
+    <rect x="120" y="4" width="42" height="20" rx="10" fill="#ffffff" stroke="#1a666b" stroke-width="1.8"/>
+    <rect x="120" y="4" width="21" height="20" rx="10" fill="#e7f1f1"/>
+    <line x1="141" y1="4" x2="141" y2="24" stroke="#1a666b" stroke-width="1.4"/>
+    <text x="141" y="40" text-anchor="middle" class="f sub">0.5g</text>
+    <text x="141" y="54" text-anchor="middle" class="f pill-lbl">0.25 DDD</text>
+
+    <text x="171" y="19" text-anchor="middle" class="f" font-size="14" font-weight="800" fill="#9e4f0e">+</text>
+
+    <!-- Pill 4 -->
+    <rect x="180" y="4" width="42" height="20" rx="10" fill="#ffffff" stroke="#1a666b" stroke-width="1.8"/>
+    <rect x="180" y="4" width="21" height="20" rx="10" fill="#e7f1f1"/>
+    <line x1="201" y1="4" x2="201" y2="24" stroke="#1a666b" stroke-width="1.4"/>
+    <text x="201" y="40" text-anchor="middle" class="f sub">0.5g</text>
+    <text x="201" y="54" text-anchor="middle" class="f pill-lbl">0.25 DDD</text>
+
+    <text x="239" y="20" text-anchor="middle" class="f" font-size="18" font-weight="800" fill="#145256">=</text>
+
+    <!-- Result Box -->
+    <rect x="256" y="0" width="102" height="54" rx="5" fill="#145256"/>
+    <text x="307" y="26" text-anchor="middle" class="f" font-size="18" font-weight="800" fill="#ffffff">1 DDD</text>
+    <text x="307" y="44" text-anchor="middle" class="f" font-size="11" font-weight="600" fill="#f6dfc2">一天 4 次共 2.0 克</text>
+  </g>
+
+  <!-- DID Comparison Boxes -->
+  <rect x="494" y="232" width="188" height="88" rx="5" fill="#fafaf7" stroke="#d8ddda"/>
+  <text x="506" y="253" class="f" font-size="12" font-weight="800" fill="#145256">門住診／門診 DID</text>
+  <text x="506" y="271" class="f sub">每千人口人日 DDD 數</text>
+  <text x="506" y="289" class="f sub">例：100 萬人年用 25 萬 DDD</text>
+  <text x="506" y="308" class="f" font-size="11.8" font-weight="800" fill="#9e4f0e">→ 0.685 DDD／千人口人日</text>
+
+  <rect x="694" y="232" width="188" height="88" rx="5" fill="#fafaf7" stroke="#d8ddda"/>
+  <text x="706" y="253" class="f" font-size="12" font-weight="800" fill="#28587b">住院 DID</text>
+  <text x="706" y="271" class="f sub">每千住院人日 DDD 數</text>
+  <text x="706" y="289" class="f sub">例：300 萬人日用 7 萬 DDD</text>
+  <text x="706" y="308" class="f" font-size="11.8" font-weight="800" fill="#28587b">→ 23.3 DDD／千住院人日</text>
+
+  <!-- Crucial Citizen Disclaimer -->
+  <rect x="494" y="334" width="388" height="40" rx="5" fill="#f9eaea" stroke="#e3b8b8"/>
+  <text x="506" y="350" class="f warn" font-size="11.2">重要提醒：DDD 僅為標準化監測與跨國評比單位，並非建議處方劑量</text>
+  <text x="506" y="366" class="f sub">實際抗生素用藥請務必遵照醫師診斷與處方指示服用。</text>
+
+  <text x="20" y="405" class="f sub">資料依據：臺灣抗生素使用量監視年報（中華民國 113 年／2024 年）前言、ATC/DDD 與 WHO AWaRe 分類說明。</text>
+</svg>

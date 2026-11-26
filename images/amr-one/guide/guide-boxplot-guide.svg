@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" role="img" aria-labelledby="t4 d4">
+  <title id="t4">醫療照護相關感染監視年報箱形圖與六步驟解讀概念示意圖</title>
+  <desc id="d4">概念教學示意圖，不含實際統計數據。標示箱形圖上下鬚為第 90 及第 10 百分位、箱體上下緣為第 75 及第 25 百分位、紅色虛線為平均值、黑色實線為第 50 百分位中位數，並呈現附錄六步驟解讀指引與小樣本保護規則。</desc>
+  <defs>
+    <style>
+      .f { font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif; }
+      .h-title { font-size: 16px; font-weight: 800; fill: #1e2423; }
+      .sec-h { font-size: 13.5px; font-weight: 800; fill: #145256; }
+      .lbl-b { font-size: 12.5px; font-weight: 800; fill: #1e2423; }
+      .lbl-r { font-size: 12px; font-weight: 800; fill: #a62c2b; }
+      .lbl-w { font-size: 12px; font-weight: 800; fill: #9e4f0e; }
+      .sub { font-size: 11.3px; font-weight: 500; fill: #4c5957; }
+      .step-num { font-size: 11px; font-weight: 800; fill: #ffffff; font-family: ui-monospace, Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="920" height="380" rx="8" fill="#fafaf7" stroke="#d8ddda" stroke-width="1"/>
+  <!-- Top header -->
+  <rect x="0" y="0" width="920" height="44" rx="8" fill="#eeefe9"/>
+  <rect x="0" y="36" width="920" height="8" fill="#eeefe9"/>
+  <line x1="0" y1="44" x2="920" y2="44" stroke="#d8ddda" stroke-width="1"/>
+  <rect x="20" y="13" width="4" height="18" rx="2" fill="#1a666b"/>
+  <text x="32" y="27" class="f h-title">如何看懂年報箱形圖（Box Plot）與百分位？</text>
+  <rect x="708" y="11" width="192" height="22" rx="3" fill="#fbf0e3" stroke="#e4c6a3"/>
+  <text x="804" y="26" text-anchor="middle" class="f" font-size="11" font-weight="800" fill="#9e4f0e">概念教學示意・非實際統計數據</text>
+
+  <!-- LEFT: Conceptual Boxplot Anatomy -->
+  <rect x="20" y="60" width="526" height="288" rx="6" fill="#ffffff" stroke="#b8cfd0" stroke-width="1.3"/>
+  <text x="36" y="84" class="f sec-h">箱形圖結構圖解（附錄報表解讀參考）</text>
+
+  <!-- Zone bands behind boxplot -->
+  <rect x="38" y="96" width="176" height="38" rx="4" fill="#f9eaea" fill-opacity="0.7"/>
+  <rect x="38" y="136" width="176" height="128" rx="4" fill="#e7f1f1" fill-opacity="0.45"/>
+  <rect x="38" y="266" width="176" height="42" rx="4" fill="#fbf0e3" fill-opacity="0.7"/>
+
+  <text x="46" y="114" class="f" font-size="11" font-weight="800" fill="#852020">高偏離區（&gt; P90）</text>
+  <text x="46" y="128" class="f" font-size="10.2" fill="#852020">建議調查原因</text>
+
+  <text x="46" y="284" class="f" font-size="11" font-weight="800" fill="#9e4f0e">低偏離區（&lt; P10）</text>
+  <text x="46" y="299" class="f" font-size="10.2" fill="#7c3d0a">良好成效或低報</text>
+
+  <!-- Actual conceptual Box Plot centered at x=166 -->
+  <!-- Whisker line P90 (y=134) to P10 (y=266) -->
+  <line x1="166" y1="134" x2="166" y2="266" stroke="#145256" stroke-width="2.2"/>
+  <!-- P90 cap -->
+  <line x1="146" y1="134" x2="186" y2="134" stroke="#145256" stroke-width="2.6" stroke-linecap="round"/>
+  <!-- P10 cap -->
+  <line x1="146" y1="266" x2="186" y2="266" stroke="#145256" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- Box Q3 (y=164) to Q1 (y=236) -->
+  <rect x="136" y="164" width="60" height="72" rx="3" fill="#e7f1f1" stroke="#1a666b" stroke-width="2.2"/>
+  <!-- Mean: Red dashed line (y=186) -->
+  <line x1="138" y1="186" x2="194" y2="186" stroke="#c82829" stroke-width="2.4" stroke-dasharray="5,3"/>
+  <!-- Median: Black solid line (y=206) -->
+  <line x1="137" y1="206" x2="195" y2="206" stroke="#1e2423" stroke-width="3"/>
+
+  <!-- Callout pointer lines & labels -->
+  <!-- P90 -->
+  <line x1="192" y1="134" x2="232" y2="120" stroke="#6e7b79" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <circle cx="234" cy="120" r="3" fill="#145256"/>
+  <text x="244" y="124" class="f lbl-b">第 90 百分位（上鬚頂端）</text>
+  <text x="244" y="139" class="f sub">超過此值屬「高偏離值」，可能需檢討原因</text>
+
+  <!-- P75 -->
+  <line x1="200" y1="164" x2="232" y2="160" stroke="#6e7b79" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <circle cx="234" cy="160" r="3" fill="#1a666b"/>
+  <text x="244" y="164" class="f lbl-b">第 75 百分位（箱體上緣）</text>
+
+  <!-- Mean -->
+  <line x1="200" y1="186" x2="232" y2="186" stroke="#c82829" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <circle cx="234" cy="186" r="3" fill="#c82829"/>
+  <text x="244" y="190" class="f lbl-r">平均值（箱內紅色虛線）</text>
+
+  <!-- Median P50 -->
+  <line x1="200" y1="206" x2="232" y2="212" stroke="#1e2423" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <circle cx="234" cy="212" r="3" fill="#1e2423"/>
+  <text x="244" y="216" class="f lbl-b">第 50 百分位・中位數（黑色實線）</text>
+  <text x="244" y="231" class="f sub">全國一半醫院低於此值、一半高於此值</text>
+
+  <!-- P25 -->
+  <line x1="200" y1="236" x2="232" y2="250" stroke="#6e7b79" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <circle cx="234" cy="250" r="3" fill="#1a666b"/>
+  <text x="244" y="254" class="f lbl-b">第 25 百分位（箱體下緣）</text>
+
+  <!-- P10 -->
+  <line x1="192" y1="266" x2="232" y2="282" stroke="#9e4f0e" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <circle cx="234" cy="282" r="3" fill="#9e4f0e"/>
+  <text x="244" y="286" class="f lbl-w">第 10 百分位（下鬚底端）</text>
+  <text x="244" y="301" class="f sub">低於此值屬「低偏離值」：可能成效佳、導管少</text>
+  <text x="244" y="315" class="f sub">或有低報（under-reporting）與低估情形</text>
+
+  <!-- Bottom note inside left box -->
+  <text x="36" y="336" class="f sub">※ 註：箱體（P25–P75）涵蓋中間 50% 醫院之分布範圍。</text>
+
+  <!-- RIGHT: 3 Rules + Quick Reading Checklist -->
+  <rect x="560" y="60" width="340" height="288" rx="6" fill="#ffffff" stroke="#d8ddda" stroke-width="1.2"/>
+  <text x="576" y="84" class="f sec-h">看懂報表的 4 個關鍵原則</text>
+
+  <!-- Rule 1 -->
+  <rect x="576" y="96" width="308" height="52" rx="5" fill="#f3f8f8" stroke="#b8cfd0"/>
+  <circle cx="596" cy="122" r="11" fill="#1a666b"/>
+  <text x="596" y="126" text-anchor="middle" class="step-num">1</text>
+  <text x="616" y="116" class="f lbl-b">全院感染率不宜直接互比醫院</text>
+  <text x="616" y="134" class="f sub">受通報落實度與病人嚴重度影響，應看導管指標</text>
+
+  <!-- Rule 2 -->
+  <rect x="576" y="156" width="308" height="52" rx="5" fill="#f3f8f8" stroke="#b8cfd0"/>
+  <circle cx="596" cy="182" r="11" fill="#1a666b"/>
+  <text x="596" y="186" text-anchor="middle" class="step-num">2</text>
+  <text x="616" y="176" class="f lbl-b">導管感染密度須併看導管使用比率</text>
+  <text x="616" y="194" class="f sub">CLABSI、VAP、CAUTI 較具醫院同儕比較性</text>
+
+  <!-- Rule 3 -->
+  <rect x="576" y="216" width="308" height="52" rx="5" fill="#faf7f2" stroke="#e4c6a3"/>
+  <circle cx="596" cy="242" r="11" fill="#d9822b"/>
+  <text x="596" y="246" text-anchor="middle" class="step-num">3</text>
+  <text x="616" y="236" class="f lbl-b">人日數 &lt; 50 病房不納入排序</text>
+  <text x="616" y="254" class="f sub">未提供感染人次或人日數之病房亦不列入統計</text>
+
+  <!-- Rule 4 -->
+  <rect x="576" y="276" width="308" height="58" rx="5" fill="#faf7f2" stroke="#e4c6a3"/>
+  <circle cx="596" cy="305" r="11" fill="#d9822b"/>
+  <text x="596" y="309" text-anchor="middle" class="step-num">4</text>
+  <text x="616" y="296" class="f lbl-b">小樣本病房數保護機制</text>
+  <text x="616" y="313" class="f sub">病房數 &lt; 10 不提供百分位；</text>
+  <text x="616" y="328" class="f sub">病房數 10–19 僅提供第 50 百分位（中位數）</text>
+
+  <text x="20" y="368" class="f sub">資料依據：2024 年區域級以上醫院及地區醫院醫療照護相關感染監視年報「壹、前言」與「肆、附錄－報表解讀之參考說明」。</text>
+</svg>

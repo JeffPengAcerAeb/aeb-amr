@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 56" width="164" height="56" role="img" aria-label="符合無障礙網頁開發規範 2.1 AA 等級">
+  <rect x="1" y="1" width="162" height="54" rx="4" fill="#ffffff" stroke="#c8d4d3" stroke-width="1.5"/>
+  <rect x="1" y="1" width="50" height="54" rx="4" fill="#145256"/>
+  <rect x="44" y="1" width="7" height="54" fill="#145256"/>
+  <text x="26" y="32" text-anchor="middle" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif" font-size="21" font-weight="800" fill="#ffffff">AA</text>
+  <text x="26" y="46" text-anchor="middle" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif" font-size="9" font-weight="700" fill="#d2e6e7">2.1</text>
+  <text x="62" y="25" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif" font-size="12.5" font-weight="700" fill="#1e2423">無障礙網頁</text>
+  <text x="62" y="42" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif" font-size="10.5" font-weight="500" fill="#4c5957">WCAG 2.1 AA</text>
+</svg>

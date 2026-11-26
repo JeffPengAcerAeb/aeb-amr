@@ -1,13 +1,22 @@
 const instances = new WeakMap();
 
-export async function render(host, query, receiver) {
-    const report = buildReportData(query);
+export async function render(host, query, receiver, preview = false, onePresentation = false) {
+    if (onePresentation) query = { ...query, onePresentation: true };
+    const report = preview && !["hai", "one-health-quality"].includes(query.family)
+        ? await (await import("./amrPreviewData.js")).loadReport(query)
+        : buildReportData(query);
+    const layout = onePresentation ? oneChartLayout(report.kind) : null;
+    if (layout) {
+        host.style.setProperty("--one-chart-min-width", `${layout.minWidth}px`);
+        host.style.setProperty("--one-chart-aspect", `${layout.width} / ${layout.height}`);
+    }
     if (report.kind === "susceptibility-heatmap") {
         dispose(host);
         const { renderSusceptibilityHeatmap } = await import("./amrSusceptibilityHeatmap.js");
         const state = { query, report, legendSelected: {}, renderer: "d3" };
         state.chart = await renderSusceptibilityHeatmap(host, query, report, chartText);
-        state.observer = new ResizeObserver(() => state.chart.resize());
+        if (layout) fitOneSvg(host);
+        state.observer = new ResizeObserver(() => { state.chart.resize(); if (layout) fitOneSvg(host); });
         state.observer.observe(host);
         instances.set(host, state);
         return;
@@ -17,7 +26,8 @@ export async function render(host, query, receiver) {
         const { renderIsolateAlluvial } = await import("./amrIsolateAlluvial.js");
         const state = { query, report, legendSelected: {}, renderer: "d3" };
         state.chart = await renderIsolateAlluvial(host, query, report, chartText);
-        state.observer = new ResizeObserver(() => state.chart.resize());
+        if (layout) fitOneSvg(host);
+        state.observer = new ResizeObserver(() => { state.chart.resize(); if (layout) fitOneSvg(host); });
         state.observer.observe(host);
         instances.set(host, state);
         return;
@@ -27,7 +37,8 @@ export async function render(host, query, receiver) {
         const { renderConsumption } = await import("./amrConsumptionChart.js");
         const state = { query, report, legendSelected: {}, renderer: "d3" };
         state.chart = await renderConsumption(host, query, report, consumptionLayout, consumptionColors, chartText, selected => { state.legendSelected = selected; });
-        state.observer = new ResizeObserver(() => state.chart.resize());
+        if (layout) fitOneSvg(host);
+        state.observer = new ResizeObserver(() => { state.chart.resize(); if (layout) fitOneSvg(host); });
         state.observer.observe(host);
         instances.set(host, state);
         return;
@@ -36,9 +47,10 @@ export async function render(host, query, receiver) {
     const engine = await loadEngine();
     let state = instances.get(host);
     if (!state) {
-        const chart = engine.init(host, null, { renderer: "svg" });
+        const chart = engine.init(host, null, { renderer: "svg", ...(layout ? { width: layout.width, height: layout.height } : {}) });
         const observer = new ResizeObserver(() => {
-            chart.resize();
+            const currentLayout = instances.get(host)?.oneLayout;
+            chart.resize(currentLayout ? { width: currentLayout.width, height: currentLayout.height } : undefined);
             instances.get(host)?.decorate?.();
         });
         observer.observe(host);
@@ -47,6 +59,17 @@ export async function render(host, query, receiver) {
     }
     state.query = query;
     state.report = report;
+    state.oneLayout = layout;
+    state.chart.off("rendered");
+    if (layout) {
+        state.chart.on("rendered", () => {
+            fitOneSvg(host, state.chart.getWidth(), state.chart.getHeight());
+            for (const button of state.oneLegend?.querySelectorAll("button") ?? []) {
+                button.setAttribute("aria-pressed", String(state.legendSelected[button.dataset.series] !== false));
+            }
+        });
+        state.chart.resize({ width: layout.width, height: layout.height });
+    }
     if (report.kind === "map") await loadRegions(engine);
     state.chart.off("click");
     state.chart.off("mouseover");
@@ -232,6 +255,57 @@ export async function render(host, query, receiver) {
             }
         });
     }
+}
+
+export function oneChartLayout(kind) {
+    if (kind === "one-health-animal") return { width: 780, height: 330, minWidth: 620 };
+    if (kind === "consumption") return { width: 880, height: 410, minWidth: 620 };
+    if (kind === "susceptibility-heatmap") return { width: 960, height: 650, minWidth: 960 };
+    if (["mdro-facets", "facets", "map"].includes(kind)) return { width: 860, height: 480, minWidth: 620 };
+    return { width: 860, height: 370, minWidth: 620 };
+}
+
+export function fitOneSvg(host, width, height) {
+    const svg = host.querySelector("svg");
+    if (!svg) throw new Error("ONE chart renderer did not create an SVG.");
+    width ??= Number(svg.getAttribute("width"));
+    height ??= Number(svg.getAttribute("height"));
+    if (!(width > 0 && height > 0)) throw new Error("ONE chart SVG dimensions must be positive.");
+    host.style.height = "";
+    host.style.setProperty("--one-chart-aspect", `${width} / ${height}`);
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    svg.style.width = "100%";
+    svg.style.height = "100%";
+    svg.parentElement.style.width = `${width}px`;
+    svg.parentElement.style.height = `${height}px`;
+    svg.parentElement.style.transformOrigin = "0 0";
+    svg.parentElement.style.transform = `scale(${host.clientWidth / width})`;
+}
+
+export function renderOneAnnotations(host, legend, summary) {
+    const state = instances.get(host);
+    legend.replaceChildren();
+    summary.replaceChildren();
+    legend.hidden = summary.hidden = state.report.kind !== "class-share";
+    state.oneLegend = legend;
+    if (legend.hidden) return;
+    const { query, report } = state;
+    const labels = { Access: "Access（可近性）", Watch: "Watch（警戒性）", Reserve: "Reserve（保留性）", Other: "Other（其他）", "Not recommended": "Not recommended（不建議）" };
+    for (const [index, name] of report.labels.entries()) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.dataset.series = name;
+        button.setAttribute("aria-pressed", String(state.legendSelected[name] !== false));
+        const swatch = document.createElement("span");
+        swatch.className = "one-chart-swatch";
+        swatch.style.setProperty("--one-series-color", oneClassShareColor(name, index));
+        swatch.setAttribute("aria-hidden", "true");
+        button.append(swatch, document.createTextNode(query.english ? chartText(name, query) : labels[name] ?? name));
+        button.addEventListener("click", () => state.chart.dispatchAction({ type: "legendToggleSelect", name: chartText(name, query) }));
+        legend.append(button);
+    }
+    const year = report.years.at(-1);
+    summary.textContent = `${year} · ${report.labels.map(name => `${name}: ${classShareValue(report.rows.find(row => row.year === year && row.name === name).value)}%`).join(" · ")}`;
 }
 
 function bindChartClick(state, handler) {
@@ -629,6 +703,10 @@ const classShareGroups = {
     Cephalosporins: ["J01DB", "J01DC", "J01DD", "J01DE", "J01DI"]
 };
 const classShareColors = { Access: "#7daf50", Watch: "#ed7d31", Reserve: "#df2227", Other: "#b6b6b6", "Not recommended": "#6aa6cc", J01CA: "#4472c4", J01CE: "#ed7d31", J01CF: "#70ad47", J01CR: "#a16da4", J01DB: "#4472c4", J01DC: "#70ad47", J01DD: "#ed7d31", J01DE: "#a16da4", J01DI: "#33a3a0" };
+const oneChartPalette = ["#1a666b", "#a65611", "#28587b", "#2c6b4f", "#a62c2b", "#64517a", "#246f73", "#7d4e22", "#4d602f", "#49565c", "#5f6b69"];
+function oneClassShareColor(name, index) {
+    return ({ Access: "#1a666b", Watch: "#a65611", Reserve: "#28587b", "Not recommended": "#2c6b4f", Other: "#5f6b69" })[name] ?? oneChartPalette[index % oneChartPalette.length];
+}
 
 function classShareData(query, years) {
     const group = query.filters.classgroup;
@@ -667,6 +745,20 @@ export function classShareOptions(query, report, selected = {}) {
         graphic: { elements: [{ id: "class-share-summary", type: "text", left: "center", top: null, bottom: 16, style: { text: `${report.years.at(-1)} · ${query.english ? "Details" : "詳細數據"}\n${tableText}`, fontSize: 11, lineHeight: 20, fill: "#334653", align: "center" } }] },
         series: report.labels.map(name => ({ name, type: "bar", stack: "class-share", barMaxWidth: 55, itemStyle: { color: classShareColors[name] }, data: report.years.map(year => { const row = report.rows.find(row => row.year === year && row.name === name); return { value: row.value, row }; }) }))
     };
+    if (query.onePresentation) {
+        return {
+            ...options,
+            title: { show: false },
+            grid: { left: 70, right: 20, top: 25, bottom: 55 },
+            legend: { ...options.legend, show: false },
+            graphic: { elements: [] },
+            series: options.series.map((series, index) => ({
+                ...series,
+                itemStyle: { color: oneClassShareColor(series.name, index) },
+                label: { show: true, position: "inside", color: "#fff", fontSize: 11, formatter: params => params.value >= 4 ? `${classShareValue(params.value)}%` : "" }
+            }))
+        };
+    }
     return { baseOption: options, media: [{ query: { maxWidth: 650 }, option: {
         title: { ...options.title, text: `${query.filters.classgroup} · ${query.filters.visit}\n${query.start}-${query.end}`, textStyle: { fontSize: 12 } },
         grid: { left: 60, right: 12, top: 60, bottom: 230 },
@@ -1498,6 +1590,22 @@ function animalOptions(report) {
     const grids = [{ left: 55, right: "54%", top: 60, bottom: 110 }, { left: "58%", right: 40, top: 60, bottom: 110 }];
     const titles = [{ text: "家畜（豬）", left: 55, top: 12, backgroundColor: "#d9efed", padding: [8, 14] }, { text: "家禽（雞）", left: "58%", top: 12, backgroundColor: "#e1efd8", padding: [8, 14] }];
     const axes = report.years.map(String);
+    if (report.animals?.length === 1) {
+        const animal = report.animals[0];
+        return {
+            ...baseOption(),
+            grid: { left: 55, right: 30, top: 40, bottom: 100 },
+            legend: { data: report.labels, bottom: 8, type: "scroll" },
+            tooltip: { trigger: "axis", confine: true, valueFormatter: value => `${value}%` },
+            xAxis: { type: "category", data: axes, boundaryGap: false, name: "民國年" },
+            yAxis: { type: "value", min: 0, max: 100, interval: 20, name: "抗藥性（%）" },
+            series: report.labels.map(name => ({
+                name, type: "line", symbol: symbols[name], symbolSize: 6,
+                itemStyle: { color: colors[name] }, lineStyle: { width: 2 },
+                data: report.years.map(year => report.rows.find(row => row.animal === animal && row.name === name && row.year === year)?.value ?? null)
+            }))
+        };
+    }
     return {
         baseOption: {
             ...baseOption(), title: titles, grid: grids,

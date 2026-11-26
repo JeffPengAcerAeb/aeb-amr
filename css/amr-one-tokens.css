@@ -1,0 +1,108 @@
+/* Imported from docs/2.ONE/assets/css/tokens.css; scoped to the independent ONE entry. */
+.amr-layout.amr-one {
+  --font-scale: 1;
+
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Heiti TC", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
+
+  
+  --brand-900: #0f3d40;      
+  --brand-800: #145256;      
+  --brand-700: #1a666b;      
+  --brand-600: #1f757a;      
+  --brand-100: #e7f1f1;      
+  --brand-050: #f3f8f8;      
+  --brand-border: #b8cfd0;
+
+  
+  --accent-800: #7c3d0a;     
+  --accent-700: #9e4f0e;     
+  --accent-500: #d9822b;     
+  --accent-100: #fbf0e3;     
+  --accent-border: #e4c6a3;
+
+  
+  --leaf-800: #1e523a;       
+  --leaf-700: #2c6b4f;       
+  --leaf-100: #e8f2ed;
+  --leaf-border: #b8d3c5;
+
+  --sky-800: #1d4460;        
+  --sky-700: #28587b;        
+  --sky-100: #e8f0f6;
+  --sky-border: #b8cde0;
+
+  --warm-800: var(--accent-800);
+  --warm-700: var(--accent-700);
+  --warm-500: var(--accent-500);
+  --warm-100: var(--accent-100);
+  --warm-border: var(--accent-border);
+
+  --coral-800: #852020;      
+  --coral-700: #a62c2b;      
+  --coral-100: #f9eaea;
+  --coral-border: #e3b8b8;
+
+  
+  --cdc-green-900: var(--brand-900);
+  --cdc-green-800: var(--brand-800);
+  --cdc-green-700: var(--brand-700);
+  --cdc-green-600: var(--brand-600);
+  --cdc-green-100: var(--brand-100);
+  --cdc-green-050: var(--brand-050);
+  --cdc-green-border: var(--brand-border);
+
+  --oh-teal-700: var(--sky-700);
+  --oh-teal-100: var(--sky-100);
+  --oh-teal-border: var(--sky-border);
+
+  --oh-amber-700: var(--accent-700);
+  --oh-amber-100: var(--accent-100);
+  --oh-amber-border: var(--accent-border);
+
+  --alert-red-700: var(--coral-700);
+  --alert-red-100: var(--coral-100);
+  --alert-red-border: var(--coral-border);
+
+  
+  --focus-ring-light: #145256;
+  --focus-ring-outer: #e59a38;
+
+  
+  --ink-900: #1e2423;        
+  --ink-700: #374240;        
+  --ink-600: #4c5957;        
+  --ink-500: #596664;        
+  --border-strong: #6e7b79;  
+  --border-default: #d8ddda;
+  --border-subtle: #e9ecea;
+
+  --surface-page: #f6f6f3;   
+  --surface-band: #eeefe9;   
+  --surface-white: #ffffff;
+
+  
+  --container-max: 1280px;
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-pill: 999px;
+
+  --shadow-subtle: 0 1px 3px rgba(24, 36, 35, 0.06);
+  --shadow-hover: 0 4px 12px rgba(20, 62, 65, 0.09);
+  --shadow-dropdown: 0 8px 20px rgba(18, 40, 42, 0.14);
+  --shadow-dialog: 0 16px 36px rgba(15, 36, 38, 0.22);
+
+  
+  --text-xs: calc(0.8125rem * var(--font-scale));
+  --text-sm: calc(0.875rem * var(--font-scale));
+  --text-base: calc(1rem * var(--font-scale));
+  --text-md: calc(1.0625rem * var(--font-scale));
+  --text-lg: calc(1.25rem * var(--font-scale));
+  --text-xl: calc(1.5rem * var(--font-scale));
+  --text-2xl: calc(1.875rem * var(--font-scale));
+}
+.amr-layout.amr-one[data-font-size="sm"] { --font-scale: 0.92; }
+.amr-layout.amr-one[data-font-size="md"] { --font-scale: 1; }
+.amr-layout.amr-one[data-font-size="lg"] { --font-scale: 1.15; }
+

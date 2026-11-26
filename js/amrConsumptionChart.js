@@ -62,8 +62,8 @@ export async function renderConsumption(host, query, report, buildLayout, colors
     function draw() {
         tooltip.style.display = "none";
         viewport.replaceChildren();
-        chartWidth = Math.max(740, host.clientWidth, report.years.length * (report.unit === "DDD" ? 115 : 65) + 125);
-        chartHeight = Math.max(480, host.clientHeight);
+        chartWidth = query.onePresentation ? 880 : Math.max(740, host.clientWidth, report.years.length * (report.unit === "DDD" ? 115 : 65) + 125);
+        chartHeight = query.onePresentation ? 410 : Math.max(480, host.clientHeight);
         const margin = { left: report.unit === "DDD" ? 100 : 65, right: 25, top: 55, bottom: 130 };
         const innerWidth = chartWidth - margin.left - margin.right;
         const innerHeight = chartHeight - margin.top - margin.bottom;
@@ -74,6 +74,8 @@ export async function renderConsumption(host, query, report, buildLayout, colors
             .attr("xmlns", "http://www.w3.org/2000/svg")
             .attr("width", chartWidth).attr("height", chartHeight)
             .attr("viewBox", `0 0 ${chartWidth} ${chartHeight}`)
+            .style("width", query.onePresentation ? "100%" : null)
+            .style("height", query.onePresentation ? "100%" : null)
             .style("background", "#fff")
             .style("font-family", "Noto Sans TC, sans-serif");
         svg.append("rect").attr("width", chartWidth).attr("height", chartHeight).attr("fill", "#fff");

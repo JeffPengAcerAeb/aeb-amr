@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 370" role="img" aria-labelledby="t1 d1">
+  <title id="t1">我國年季報監測資料雙軌彙整架構圖</title>
+  <desc id="d1">呈現全國醫療院所透過線上輸入、交換中心及 WebAPI 上傳，以及中央健康保險署透過 SFTP 資料自動化交換，雙軌匯入台灣醫院感染管制與抗藥性監測管理系統 THAS，進而產出四份公開年季報回饋醫療機構與社會大眾。</desc>
+  <defs>
+    <style>
+      .f { font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif; }
+      .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; fill: #145256; }
+      .h-title { font-size: 16px; font-weight: 800; fill: #1e2423; }
+      .card-t { font-size: 14px; font-weight: 800; fill: #1e2423; }
+      .card-t-inv { font-size: 15px; font-weight: 800; fill: #ffffff; }
+      .body { font-size: 12px; font-weight: 500; fill: #374240; }
+      .body-sm { font-size: 11px; font-weight: 500; fill: #4c5957; }
+      .body-inv { font-size: 11.5px; font-weight: 500; fill: #e7f1f1; }
+      .chip { font-size: 11px; font-weight: 700; fill: #145256; }
+      .chip-warm { font-size: 11px; font-weight: 700; fill: #9e4f0e; }
+      .arrow-lbl { font-size: 11px; font-weight: 700; fill: #145256; }
+    </style>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#1a666b"/>
+    </marker>
+    <marker id="arr-ochre" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d9822b"/>
+    </marker>
+  </defs>
+
+  <!-- Warm Archival Canvas -->
+  <rect x="0" y="0" width="920" height="370" rx="8" fill="#fafaf7" stroke="#d8ddda" stroke-width="1"/>
+
+  <!-- Top Editorial Header Strip -->
+  <rect x="0" y="0" width="920" height="44" rx="8" fill="#eeefe9"/>
+  <rect x="0" y="36" width="920" height="8" fill="#eeefe9"/>
+  <line x1="0" y1="44" x2="920" y2="44" stroke="#d8ddda" stroke-width="1"/>
+  <rect x="20" y="13" width="4" height="18" rx="2" fill="#1a666b"/>
+  <text x="32" y="27" class="f h-title">全國年季報監測資料雙軌彙整流程（THAS 系統）</text>
+  <rect x="748" y="11" width="152" height="22" rx="3" fill="#e7f1f1" stroke="#b8cfd0"/>
+  <text x="824" y="26" text-anchor="middle" class="f chip">2007 TNIS → 2020 THAS</text>
+
+  <!-- Column Headers -->
+  <text x="155" y="68" text-anchor="middle" class="f eyebrow">STEP 1｜兩大官方資料來源</text>
+  <text x="466" y="68" text-anchor="middle" class="f eyebrow">STEP 2｜國家級監測平臺</text>
+  <text x="772" y="68" text-anchor="middle" class="f eyebrow">STEP 3｜四份公開年季報</text>
+
+  <!-- LEFT TOP CARD: Hospitals -->
+  <rect x="24" y="82" width="262" height="122" rx="6" fill="#ffffff" stroke="#b8cfd0" stroke-width="1.4"/>
+  <rect x="24" y="82" width="262" height="4" rx="2" fill="#1a666b"/>
+  <!-- Hospital icon -->
+  <rect x="38" y="98" width="28" height="28" rx="4" fill="#e7f1f1" stroke="#b8cfd0"/>
+  <path d="M52 104 v16 M44 112 h16" stroke="#1a666b" stroke-width="2.6" stroke-linecap="round"/>
+  <text x="76" y="111" class="f card-t">全國參與通報醫院</text>
+  <text x="76" y="127" class="f body-sm">涵蓋醫學中心、區域與地區醫院</text>
+  <text x="38" y="150" class="f body">• 年報：28 醫中、84 區域、104 地區</text>
+  <text x="38" y="168" class="f body">• 季報：29 醫中（含兒醫）、84 區域</text>
+  <rect x="38" y="177" width="106" height="19" rx="3" fill="#f3f8f8" stroke="#b8cfd0"/>
+  <text x="91" y="190" text-anchor="middle" class="f chip">① 線上輸入通報</text>
+  <rect x="150" y="177" width="124" height="19" rx="3" fill="#f3f8f8" stroke="#b8cfd0"/>
+  <text x="212" y="190" text-anchor="middle" class="f chip">② 交換中心 / WebAPI</text>
+
+  <!-- LEFT BOTTOM CARD: NHIA -->
+  <rect x="24" y="220" width="262" height="122" rx="6" fill="#ffffff" stroke="#e4c6a3" stroke-width="1.4"/>
+  <rect x="24" y="220" width="262" height="4" rx="2" fill="#d9822b"/>
+  <!-- Data exchange icon -->
+  <rect x="38" y="236" width="28" height="28" rx="4" fill="#fbf0e3" stroke="#e4c6a3"/>
+  <ellipse cx="52" cy="244" rx="8" ry="3.2" fill="none" stroke="#9e4f0e" stroke-width="1.7"/>
+  <path d="M44 244 v10 c0 1.8 3.6 3.2 8 3.2 s8-1.4 8-3.2 v-10" fill="none" stroke="#9e4f0e" stroke-width="1.7"/>
+  <text x="76" y="249" class="f card-t">中央健康保險署資料庫</text>
+  <text x="76" y="265" class="f body-sm">自 107 年起運用健保資料庫監測</text>
+  <text x="38" y="288" class="f body">• 健保特約西醫與牙醫院所及診所</text>
+  <text x="38" y="306" class="f body">• 分析門診、住院處方與治療醫令</text>
+  <rect x="38" y="315" width="186" height="19" rx="3" fill="#fbf0e3" stroke="#e4c6a3"/>
+  <text x="131" y="328" text-anchor="middle" class="f chip-warm">SFTP 資料自動化定期交換</text>
+
+  <!-- ARROWS: Left -> Center -->
+  <path d="M286 144 L344 144 L344 182 L364 182" fill="none" stroke="#1a666b" stroke-width="2" marker-end="url(#arr-teal)"/>
+  <path d="M286 280 L344 280 L344 238 L364 238" fill="none" stroke="#d9822b" stroke-width="2" marker-end="url(#arr-ochre)"/>
+  <rect x="296" y="122" width="54" height="18" rx="3" fill="#fafaf7"/>
+  <text x="323" y="135" text-anchor="middle" class="f arrow-lbl">感管通報</text>
+  <rect x="296" y="286" width="54" height="18" rx="3" fill="#fafaf7"/>
+  <text x="323" y="299" text-anchor="middle" class="f chip-warm">用藥彙算</text>
+
+  <!-- CENTER HUB: THAS -->
+  <rect x="368" y="106" width="196" height="212" rx="8" fill="#145256" stroke="#0f3d40" stroke-width="1.5"/>
+  <rect x="368" y="106" width="196" height="5" rx="2" fill="#d9822b"/>
+  <!-- Shield emblem -->
+  <circle cx="466" cy="144" r="20" fill="#1a666b" stroke="#b8cfd0" stroke-width="1.2"/>
+  <path d="M466 131 l10 4 v8 c0 6-4.2 10.6-10 12.5 c-5.8-1.9-10-6.5-10-12.5 v-8 z" fill="none" stroke="#fbf0e3" stroke-width="2"/>
+  <path d="M462 144 l3 3 l6-6" fill="none" stroke="#f6dfc2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="466" y="184" text-anchor="middle" class="f card-t-inv">THAS 監測管理系統</text>
+  <text x="466" y="202" text-anchor="middle" class="f body-inv">台灣醫院感染管制與</text>
+  <text x="466" y="218" text-anchor="middle" class="f body-inv">抗藥性監測管理系統</text>
+  <line x1="388" y1="232" x2="544" y2="232" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+  <rect x="384" y="244" width="164" height="26" rx="4" fill="rgba(255,255,255,0.12)"/>
+  <text x="466" y="261" text-anchor="middle" class="f body-inv">醫院感染管制與抗藥性監測</text>
+  <rect x="384" y="278" width="164" height="26" rx="4" fill="rgba(217,130,43,0.26)"/>
+  <text x="466" y="295" text-anchor="middle" class="f body-inv">抗生素抗藥性管理通報模組</text>
+
+  <!-- ARROWS: Center -> Right 4 Reports -->
+  <path d="M564 185 L606 185" fill="none" stroke="#1a666b" stroke-width="2"/>
+  <path d="M606 108 L606 312" fill="none" stroke="#1a666b" stroke-width="1.8"/>
+  <path d="M606 108 L636 108" fill="none" stroke="#1a666b" stroke-width="1.8" marker-end="url(#arr-teal)"/>
+  <path d="M606 176 L636 176" fill="none" stroke="#1a666b" stroke-width="1.8" marker-end="url(#arr-teal)"/>
+  <path d="M606 244 L636 244" fill="none" stroke="#1a666b" stroke-width="1.8" marker-end="url(#arr-teal)"/>
+  <path d="M606 312 L636 312" fill="none" stroke="#d9822b" stroke-width="1.8" marker-end="url(#arr-ochre)"/>
+
+  <!-- RIGHT COLUMN: 4 Official Reports -->
+  <!-- Report 1 -->
+  <rect x="642" y="82" width="256" height="54" rx="5" fill="#ffffff" stroke="#b8cfd0" stroke-width="1.2"/>
+  <rect x="642" y="82" width="5" height="54" rx="2" fill="#1a666b"/>
+  <text x="658" y="103" class="f card-t">① 區域級以上醫院 HAI 年報</text>
+  <text x="658" y="122" class="f body-sm">2024 年｜醫學中心與區域醫院全院及 ICU</text>
+
+  <!-- Report 2 -->
+  <rect x="642" y="150" width="256" height="54" rx="5" fill="#ffffff" stroke="#b8cfd0" stroke-width="1.2"/>
+  <rect x="642" y="150" width="5" height="54" rx="2" fill="#28587b"/>
+  <text x="658" y="171" class="f card-t">② 地區醫院 HAI 年報</text>
+  <text x="658" y="190" class="f body-sm">2024 年｜104 家設有 ICU 之地區醫院</text>
+
+  <!-- Report 3 -->
+  <rect x="642" y="218" width="256" height="54" rx="5" fill="#ffffff" stroke="#b8d3c5" stroke-width="1.2"/>
+  <rect x="642" y="218" width="5" height="54" rx="2" fill="#2c6b4f"/>
+  <text x="658" y="239" class="f card-t">③ 感染與抗藥性監測季報</text>
+  <text x="658" y="258" class="f body-sm">2025 年第 3 季｜感染部位與八大抗藥菌</text>
+
+  <!-- Report 4 -->
+  <rect x="642" y="286" width="256" height="54" rx="5" fill="#ffffff" stroke="#e4c6a3" stroke-width="1.2"/>
+  <rect x="642" y="286" width="5" height="54" rx="2" fill="#d9822b"/>
+  <text x="658" y="307" class="f card-t">④ 臺灣抗生素使用量年報</text>
+  <text x="658" y="326" class="f body-sm">2024 年（113 年）｜ATC、AWaRe、DID</text>
+
+  <!-- Bottom Footnote -->
+  <text x="24" y="358" class="f body-sm">資料依據：衛生福利部疾病管制署 2024 年醫療照護相關感染監視年報、2025 年第 3 季監測季報及 2024 年臺灣抗生素使用量監視年報。</text>
+</svg>

@@ -1,17 +1,44 @@
 window.d3Charts = {
+    renderPreview: async function (renderer, element, culture) {
+        const keys = {
+            renderAlluvial: "alluvial",
+            renderAntimicrobialConsumption: "antimicrobialConsumption",
+            renderCreResistanceDashboard: "creResistanceDashboard",
+            renderFacetedStackedBarLine: "facetedStackedBarLine",
+            renderHeatmap: "heatmap",
+        };
+        try {
+            if (!element || !window.d3) throw new Error("D3 chart dependencies are unavailable.");
+            const key = keys[renderer];
+            if (!key) throw new Error(`Unknown preview chart: ${renderer}`);
+            const url = new URL("data/amr-preview/explore-charts.json", document.baseURI);
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Chart data request failed (${response.status}).`);
+            const snapshot = await response.json();
+            const data = snapshot[key];
+            if (!data || typeof data !== "object") throw new Error(`Missing preview dataset: ${key}`);
+            const table = await window.d3Charts[renderer](element, culture, data);
+            if (!table?.headers?.length || !table?.rows?.length) throw new Error("Chart returned no accessible data.");
+            return table;
+        } catch (error) {
+            element?.replaceChildren();
+            console.error(`AMR preview chart failed (${renderer}):`, error);
+            throw error;
+        }
+    },
     accessibleTable: function (headers, rows) {
         return { english: true, headers, rows: rows.map(row => row.map(value => value == null ? "—" : String(value))) };
     },
-    renderAlluvial: function (element, culture) {
+    renderAlluvial: function (element, culture, previewData) {
         if (!element || !window.d3) return;
         const isEnglish = culture === "en";
 
         // Stream/alluvial-by-year chart (ThaiAMRwatch-style)
-        const years = [2019, 2020, 2021, 2022, 2023, 2024];
+        const years = previewData ? previewData.years : [2019, 2020, 2021, 2022, 2023, 2024];
         const totals = [603463, 591201, 628659, 653415, 729812, 755833];
         const unit = "株";
 
-        const categories = [
+        const categories = previewData ? previewData.categories : [
             "Escherichia coli",
             "Klebsiella pneumoniae",
             "Staphylococcus aureus",
@@ -47,7 +74,7 @@ window.d3Charts = {
         }
 
         // Build per-year stacked segments, preserving category order in the stack.
-        const rows = years.map((year, idx) => {
+        const rows = previewData ? previewData.rows : years.map((year, idx) => {
             const total = totals[idx] || 0;
             const values = {};
             let running = 0;
@@ -306,12 +333,12 @@ window.d3Charts = {
     },
 
     // Re-implemented to match ThaiAMRwatch Sankey behavior (see ThaiAMRwatch_files/6617d4d.js.下載).
-    renderAntimicrobialConsumption: function (element) {
+    renderAntimicrobialConsumption: function (element, culture, previewData) {
         if (!element || !window.d3) return;
 
-        const years = [2019, 2020, 2021, 2022, 2023];
+        const years = previewData ? previewData.years : [2019, 2020, 2021, 2022, 2023];
         const unit = "DID";
-        const otherName = "Other non-top-10 antimicrobials";
+        const otherName = previewData ? previewData.otherName : "Other non-top-10 antimicrobials";
         const groupColors = {
             "Critically Important": "#d85850",
             "Highly Important": "#e4a761",
@@ -321,7 +348,7 @@ window.d3Charts = {
         };
 
         // Static snapshot used in the current app.
-        const sankeyRows = [
+        const sankeyRows = previewData ? previewData.sankeyRows : [
             {
                 year: 2019, total: 51.10000000000002, values: {
                     "amoxicillin": { value: 9.2, group: "Critically Important" },
@@ -844,11 +871,11 @@ window.d3Charts = {
 
     // Prototype dashboard: Taiwan choropleth + dual-axis bar/line + table (based on the screenshot provided).
     // Data is mocked; wire your API/CSV later.
-    renderCreResistanceDashboard: function (element) {
+    renderCreResistanceDashboard: function (element, culture, previewData) {
         if (!element || !window.d3) return;
 
-        const years = d3.range(2015, 2025);
-        const regions = [
+        const years = previewData ? previewData.years : d3.range(2015, 2025);
+        const regions = previewData ? previewData.regions : [
             { id: "taipei", name: "Taipei" },
             { id: "north", name: "North" },
             { id: "central", name: "Central" },
@@ -858,8 +885,8 @@ window.d3Charts = {
         ];
 
         // Mock data per region/year.
-        const data = [];
-        for (const r of regions) {
+        const data = previewData ? previewData.data : [];
+        if (!previewData) for (const r of regions) {
             for (const y of years) {
                 const base = 180 + (y - 2015) * 18 + (r.id === "taipei" ? 70 : 0);
                 const isolatesMc = Math.round(base + (Math.sin((y - 2015) / 2) * 40));
@@ -883,9 +910,10 @@ window.d3Charts = {
         // GeoJSON: Taiwan county boundaries (in wwwroot/data).
         const countyGeoUrl = `${window.d3ChartsDataBasePath || "data/"}COUNTY_MOI_1090820.json`;
         // Cache across renders/pages so we only fetch once.
-        const countyGeoPromise =
-            window.d3Charts.__twCountyGeoPromise ||
-            (window.d3Charts.__twCountyGeoPromise = d3.json(countyGeoUrl));
+        const countyGeoPromise = previewData
+            ? d3.json(new URL("data/COUNTY_MOI_1090820.json", document.baseURI))
+            : window.d3Charts.__twCountyGeoPromise ||
+                (window.d3Charts.__twCountyGeoPromise = d3.json(countyGeoUrl));
 
         element.replaceChildren();
         ensureCreStyles();
@@ -921,9 +949,10 @@ window.d3Charts = {
             chartHost.selectAll("*").remove();
             bottom.selectAll("*").remove();
 
-            renderMap();
+            const mapReady = renderMap();
             renderChart();
             renderTable();
+            return mapReady;
         }
 
         function renderMap() {
@@ -1010,7 +1039,7 @@ window.d3Charts = {
                 .attr("fill", "#666")
                 .text("Loading map...");
 
-            countyGeoPromise
+            return countyGeoPromise
                 .then((geo) => {
                     g.selectAll("*").remove();
 
@@ -1079,6 +1108,7 @@ window.d3Charts = {
                         .text("Failed to load GeoJSON.");
                     // eslint-disable-next-line no-console
                     console.error("GeoJSON load failed:", err);
+                    if (previewData) throw err;
                 });
         }
 
@@ -1245,17 +1275,18 @@ window.d3Charts = {
             document.head.appendChild(style);
         }
 
-        render();
-        return window.d3Charts.accessibleTable(["Region", "Year", "Medical center isolates", "Regional hospital isolates", "Medical center resistance (%)", "Regional hospital resistance (%)"],
+        const ready = render();
+        const table = window.d3Charts.accessibleTable(["Region", "Year", "Medical center isolates", "Regional hospital isolates", "Medical center resistance (%)", "Regional hospital resistance (%)"],
             data.map(row => [regions.find(region => region.id === row.regionId).name, row.year, row.isolatesMc, row.isolatesRh, row.resMc, row.resRh]));
+        return previewData ? ready.then(() => table) : table;
     },
 
-    renderFacetedStackedBarLine: function (element) {
+    renderFacetedStackedBarLine: function (element, culture, previewData) {
         if (!element || !window.d3) return;
 
-        const years = [2019, 2020, 2021, 2022, 2023, 2024];
-        const levels = ["Medical center", "Regional hospital", "District hospital"];
-        const sources = ["CO", "HO"];
+        const years = previewData ? previewData.years : [2019, 2020, 2021, 2022, 2023, 2024];
+        const levels = previewData ? previewData.levels : ["Medical center", "Regional hospital", "District hospital"];
+        const sources = previewData ? previewData.sources : ["CO", "HO"];
         const sourceColor = d3.scaleOrdinal().domain(sources).range(["#c7d9ef", "#2f5f9e"]);
         const lineColors = {
             "Medical center": "#32669a",
@@ -1270,8 +1301,8 @@ window.d3Charts = {
             "District hospital": 72,
         };
 
-        const bars = [];
-        years.forEach((year, yi) => {
+        const bars = previewData ? previewData.bars : [];
+        if (!previewData) years.forEach((year, yi) => {
             levels.forEach((level, li) => {
                 const total = Math.max(36, baseByLevel[level] + Math.sin(yi * 1.18 + li) * 34 + yi * (li === 2 ? 3 : 7));
                 const co = Math.round(total * (0.5 + Math.sin(yi + li) * 0.08));
@@ -1281,7 +1312,7 @@ window.d3Charts = {
             });
         });
 
-        const lineSeries = [
+        const lineSeries = previewData ? previewData.lineSeries : [
             { name: "Medical center", values: [47, 47, 50, 55, 54, 47] },
             { name: "Regional hospital", values: [55, 59, 63, 64, 61, 58] },
             { name: "District hospital", values: [71, 76, 75, 78, 70, 75] },
@@ -1620,7 +1651,7 @@ window.d3Charts = {
         }
     },
 
-    renderHeatmap: async function (element) {
+    renderHeatmap: async function (element, culture, previewData) {
         if (!element || !window.d3) return;
 
         const antibioticsSortOrder = {
@@ -1677,7 +1708,9 @@ window.d3Charts = {
         const scaleDomain = [0, 49.99, 54.99, 59.99, 64.99, 69.99, 74.99, 79.99, 84.99, 89.99, 94.99, 99.01];
         let useAccessibleColors = false;
 
-        const data = await d3.csv(`${window.d3ChartsDataBasePath || "data/"}humandata.csv`);
+        const data = previewData
+            ? Object.assign(previewData.rows, { columns: previewData.columns })
+            : await d3.csv(`${window.d3ChartsDataBasePath || "data/"}humandata.csv`);
 
         element.replaceChildren();
         ensureHeatmapStyles();

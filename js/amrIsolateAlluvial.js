@@ -10,8 +10,8 @@ export async function renderIsolateAlluvial(host, query, report, translate) {
 
     function draw() {
         viewport.replaceChildren();
-        width = Math.max(host.clientWidth, (report.years.length - 1) * 134 + 100, 520);
-        height = Math.max(host.clientHeight, 480);
+        width = query.onePresentation ? 860 : Math.max(host.clientWidth, (report.years.length - 1) * 134 + 100, 520);
+        height = query.onePresentation ? 480 : Math.max(host.clientHeight, 480);
         const margin = { left: 75, right: 25, top: 95, bottom: 65 };
         const plotHeight = height - margin.top - margin.bottom;
         const maximum = Math.max(1, ...report.years.map(year => report.rows.filter(row => row.year === year).reduce((sum, row) => sum + row.value, 0)));
@@ -29,6 +29,8 @@ export async function renderIsolateAlluvial(host, query, report, translate) {
         }
         svg = d3.select(viewport).append("svg").attr("xmlns", "http://www.w3.org/2000/svg")
             .attr("width", width).attr("height", height).attr("viewBox", `0 0 ${width} ${height}`)
+            .style("width", query.onePresentation ? "100%" : null)
+            .style("height", query.onePresentation ? "100%" : null)
             .style("font-family", "Noto Sans TC, sans-serif").attr("role", "group").attr("aria-label", translate("臨床分離菌株數監測", query));
         svg.append("rect").attr("width", width).attr("height", height).attr("fill", "#fff");
         const bands = svg.append("g");

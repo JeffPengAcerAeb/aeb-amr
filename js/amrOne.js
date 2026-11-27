@@ -54,12 +54,11 @@ export function attachCarousel(root, english = false) {
     detachCarousel(root);
     const cards = [...root.querySelectorAll("[data-one-metric]")];
     const buttons = [...root.querySelectorAll("[data-one-page]")];
-    const pause = root.querySelector("[data-one-pause]");
     const status = root.querySelector("[data-one-carousel-status]");
-    if (!cards.length || !pause || !status) throw new Error("ONE carousel markup is incomplete");
+    if (!cards.length || !buttons.length || !status) throw new Error("ONE carousel markup is incomplete");
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     let state = carouselPage(cards.length, window.innerWidth);
-    let manuallyPaused = reduced.matches, hovered = false, focused = false, touchStart = null;
+    let hovered = false, focused = false, touchStart = null;
     const listeners = [];
     const listen = (target, name, action, options) => {
         target.addEventListener(name, action, options);
@@ -72,10 +71,9 @@ export function attachCarousel(root, english = false) {
         cards.forEach((card, index) => { card.hidden = index < state.start || index >= state.end; });
         buttons.forEach((button, index) => {
             button.hidden = index >= state.pages;
-            button.setAttribute("aria-pressed", String(index === state.current));
+            if (index === state.current) button.setAttribute("aria-current", "true");
+            else button.removeAttribute("aria-current");
         });
-        pause.setAttribute("aria-pressed", String(manuallyPaused));
-        pause.textContent = manuallyPaused ? (english ? "Resume carousel" : "繼續輪播") : (english ? "Pause carousel" : "暫停輪播");
         if (focusedButton?.hidden) buttons[state.current]?.focus({ preventScroll: true });
         if (announce) status.textContent = english ? `Page ${state.current + 1} of ${state.pages}` : `第 ${state.current + 1} 頁，共 ${state.pages} 頁`;
     };
@@ -84,7 +82,6 @@ export function attachCarousel(root, english = false) {
         render(announce);
     };
     buttons.forEach((button, index) => listen(button, "click", () => { state.current = index; render(true); }));
-    listen(pause, "click", () => { manuallyPaused = !manuallyPaused; render(true); });
     listen(root, "mouseenter", () => { hovered = true; });
     listen(root, "mouseleave", () => { hovered = false; });
     listen(root, "focusin", () => { focused = true; });
@@ -96,9 +93,9 @@ export function attachCarousel(root, english = false) {
         touchStart = null;
     }, { passive: true });
     listen(window, "resize", () => render());
-    listen(reduced, "change", () => { if (reduced.matches) manuallyPaused = true; render(); });
+    listen(reduced, "change", () => render());
     const timer = setInterval(() => {
-        if (!manuallyPaused && !hovered && !focused && !document.hidden) move(1, false);
+        if (!reduced.matches && !hovered && !focused && !document.hidden) move(1, false);
     }, 7000);
     carousels.set(root, () => { clearInterval(timer); listeners.forEach(remove => remove()); });
     render();

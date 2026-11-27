@@ -32,10 +32,7 @@
 .amr-layout.amr-one .one-a11y-note { padding: 10px 16px; border: 1px solid #ffffff80; border-radius: 6px; font-size: .85em; }
 .amr-layout.amr-one .one-metric-grid { display: grid; grid-template-columns: repeat(var(--one-metrics-columns, 4), minmax(0, 1fr)); gap: 16px; }
 .amr-layout.amr-one .metric-card { min-width: 0; }
-.amr-layout.amr-one .metrics-carousel__bar { justify-content: center; gap: 20px; flex-wrap: wrap; }
-.amr-layout.amr-one .one-carousel-dot { width: 12px; height: 12px; padding: 0; border: 1px solid #1a666b; border-radius: 50%; background: #fff; cursor: pointer; }
-.amr-layout.amr-one .one-carousel-dot[aria-pressed="true"] { background: #1a666b; }
-.amr-layout.amr-one .one-carousel-pause { background: transparent; padding: 3px 8px; border: 1px solid #6e7b79; border-radius: 3px; font-size: .8em; color: #145256; cursor: pointer; }
+.amr-layout.amr-one .carousel-dot[hidden] { display: none; }
 .amr-layout.amr-one .one-news-category { font-size: var(--text-xs); color: #1a666b; }
 .amr-layout.amr-one .one-page { padding-block: 24px 48px; }
 .amr-layout.amr-one .one-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; font-size: .85em; color: #4c5957; }
